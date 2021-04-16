@@ -9,6 +9,7 @@ gdal = "*"
 numpy = "*"
 pandas = "*"
 opencv-python = "*"
+rasterio = "*"
 
 [dev-packages]
 ipykernel = "*"
