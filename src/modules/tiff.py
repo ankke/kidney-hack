@@ -3,8 +3,10 @@ import matplotlib.pyplot as plt
 import rasterio
 
 from modules.consts import TRAIN_HOME
+from modules.run_statistics import execution_time
 
 
+@execution_time
 def open_tiff_file(image_file):
     with rasterio.open(TRAIN_HOME + image_file) as file:
         if file.count == 3:
@@ -20,6 +22,7 @@ def open_tiff_file(image_file):
     return image
 
 
+@execution_time
 def show_img_from_tiff(image_file):
     img = open_tiff_file(image_file)
     plt.figure(figsize=(20, 20))

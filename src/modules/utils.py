@@ -2,6 +2,7 @@ import numpy as np
 import cv2 as cv
 
 from modules.data import data_info, train_info
+from modules.run_statistics import execution_time
 
 
 def id_from_filename(image_file):
@@ -53,7 +54,7 @@ def get_tile(image, mask, x, y, tile_size, scale=1.0):
 def rle_to_image(image_file):
     image_id = id_from_filename(image_file)
     train_df = train_info.loc[train_info['id'] == image_id]
-    rle = train_df['encoding'].values[0] if len(train_info) > 0 else None
+    rle = train_df['encoding'].values[0] if len(train_df) > 0 else None
 
     s = rle.split()
     starts, lengths = [np.asarray(x, dtype=int) for x in (s[0:][::2], s[1:][::2])]
