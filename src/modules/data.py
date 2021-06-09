@@ -5,11 +5,12 @@ import glob
 import numpy as np
 import pandas as pd
 
-from modules.consts import TRAIN_HOME, HOME
+from modules.consts import TRAIN_HOME, HOME, TEST_HOME
 
 anatomical_files = [os.path.basename(f) for f in glob.glob(TRAIN_HOME + "*.json") if "anatomical" in f]
 masks_files = [os.path.basename(f) for f in glob.glob(TRAIN_HOME + "*.json") if "anatomical" not in f]
 image_files = [os.path.basename(f) for f in glob.glob(TRAIN_HOME + "*.tiff")]
+image_test_files = [os.path.basename(f) for f in glob.glob(TEST_HOME + "*.tiff")]
 data_info = pd.read_csv(os.path.join(HOME, "HuBMAP-20-dataset_information.csv"))
 train_info = pd.read_csv(os.path.join(HOME, "train.csv"))
 

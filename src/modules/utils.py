@@ -2,7 +2,6 @@ import numpy as np
 import cv2 as cv
 
 from modules.data import data_info, train_info
-from modules.run_statistics import execution_time
 
 
 def id_from_filename(image_file):
@@ -43,18 +42,19 @@ def make_grid(shape, window=1024, min_overlap=100):
     return slices.reshape(nx * ny, 4)
 
 
-def get_tile(image, mask, x, y, tile_size, scale=1.0):
-    x = round(x * scale)
-    y = round(y * scale)
+def get_tile(image, mask, x, y, tile_size):
     image_s = image[y:y + tile_size, x:x + tile_size, :]
     mask_s = mask[y:y + tile_size, x:x + tile_size, :]
     return image_s, mask_s
 
+def get_tile_img(image, x, y, tile_size):
+    image_s = image[y:y + tile_size, x:x + tile_size, :]
+    return image_s
 
 def rle_to_image(image_file):
     image_id = id_from_filename(image_file)
     train_df = train_info.loc[train_info['id'] == image_id]
-    rle = train_df['encoding'].values[0] if len(train_df) > 0 else None
+    rle = train_df['encoding'].values[0] if len(train_df) > 0 else ''
 
     s = rle.split()
     starts, lengths = [np.asarray(x, dtype=int) for x in (s[0:][::2], s[1:][::2])]

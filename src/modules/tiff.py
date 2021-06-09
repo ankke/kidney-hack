@@ -2,13 +2,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import rasterio
 
-from modules.consts import TRAIN_HOME
+from modules.consts import TRAIN_HOME, TEST_HOME
 from modules.run_statistics import execution_time
 
 
 @execution_time
-def open_tiff_file(image_file):
-    with rasterio.open(TRAIN_HOME + image_file) as file:
+def open_tiff_file(image_file, base_path=TRAIN_HOME):
+    with rasterio.open(base_path + image_file) as file:
         if file.count == 3:
             image = file.read([1, 2, 3]).transpose(1, 2, 0).copy()
         else:

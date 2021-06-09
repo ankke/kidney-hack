@@ -3,3 +3,6 @@ hubmap-kidney-segmentation
 /.python-version
 .idea
 src/.ipynb_checkpoints
+
+src/data
+src/data_*
