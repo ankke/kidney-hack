@@ -24,3 +24,9 @@ kernel should be available on the list: Kernel -> Change kernel
 ```kaggle competitions download -c hubmap-kidney-segmentation```
 
 and unzip in project root directory
+
+## documentation
+
+Available here: [Documentation][Documentation]
+
+[Documentation]: https://github.com/ankke/kidney-hack/blob/develop/KidneyHack-documentation-polish.pdf
